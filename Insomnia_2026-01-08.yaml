@@ -1,0 +1,329 @@
+type: spec.insomnia.rest/5.0
+name: API
+meta:
+  id: wrk_503b8aeae9f44cdf961c09e80a40deef
+  created: 1767920206167
+  modified: 1767920206167
+  description: ""
+collection:
+  - name: Products
+    meta:
+      id: fld_daf777cc86fc4f899d9a6fa3a16d78cd
+      created: 1767920292835
+      modified: 1767920292835
+      sortKey: -1767920292835
+      description: ""
+    children:
+      - url: "{{ _[''].base_url }}/products"
+        name: Get All Produtcs
+        meta:
+          id: req_5528ae8e211b4e6f9a42ef4191e9ae1a
+          created: 1767920378227
+          modified: 1767920475236
+          isPrivate: false
+          description: ""
+          sortKey: -1767920473590
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/products"
+        name: Create a product
+        meta:
+          id: req_15eb0fdedbf24709a70e9e04bc724f96
+          created: 1767920424162
+          modified: 1767920495875
+          isPrivate: false
+          description: ""
+          sortKey: -1767920473490
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Produto 1",
+              "category_id": 0,
+              "price": 100
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/products/export_csv"
+        name: Export CSV
+        meta:
+          id: req_c911a81feb6a4bdd93f16dfe4f270db2
+          created: 1767920845886
+          modified: 1767920867030
+          isPrivate: false
+          description: ""
+          sortKey: -1767920473690
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/products/import_csv"
+        name: Import Products CSV
+        meta:
+          id: req_2f323882124b42069c8f2bfc70fe2e37
+          created: 1767920896292
+          modified: 1767921262961
+          isPrivate: false
+          description: ""
+          sortKey: -1767920473640
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - id: pair_d75fbf44ffce45c6961a3bbcd81c8d13
+              name: file
+              value: ""
+              description: ""
+              disabled: false
+              type: file
+              fileName: C:\Users\Olive\Downloads\products (1).csv
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Categories
+    meta:
+      id: fld_e8efdcce67254459b3e356fc060ec31f
+      created: 1767920297922
+      modified: 1767920297922
+      sortKey: -1767920297922
+      description: ""
+    children:
+      - url: "{{ _[''].base_url }}/categories"
+        name: Get All Categories
+        meta:
+          id: req_605e4f0767764b9db1f7c6aae4305839
+          created: 1767920511899
+          modified: 1767920519324
+          isPrivate: false
+          description: ""
+          sortKey: -1767920514461
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/categories"
+        name: Create a category
+        meta:
+          id: req_a6831753f9ee42dc971f34f0167a580c
+          created: 1767920532787
+          modified: 1767920631952
+          isPrivate: false
+          description: ""
+          sortKey: -1767920514361
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Eletrônicos"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/categories/import_csv"
+        name: Import Categories CSV
+        meta:
+          id: req_deb9e5d65f5c4ba189e5b6c731e7e677
+          created: 1767921613827
+          modified: 1767921972768
+          isPrivate: false
+          description: ""
+          sortKey: -1767920514561
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - id: pair_d75fbf44ffce45c6961a3bbcd81c8d13
+              name: file
+              value: ""
+              description: ""
+              disabled: false
+              type: file
+              fileName: C:\Users\Olive\Downloads\categories.csv
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Sales
+    meta:
+      id: fld_b44100b2b3214268aba7c41d7eed3fe6
+      created: 1767920303172
+      modified: 1767920303172
+      sortKey: -1767920303172
+      description: ""
+    children:
+      - url: "{{ _[''].base_url }}/sales"
+        name: Get All Sales
+        meta:
+          id: req_80228fabc1c84aa48b1c8b2e696ab322
+          created: 1767920670027
+          modified: 1767920757113
+          isPrivate: false
+          description: ""
+          sortKey: -1767920754532
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/sales"
+        name: Create a Sale
+        meta:
+          id: req_29a07cbf79df42008ae9f409b94caeb8
+          created: 1767920677608
+          modified: 1767920754443
+          isPrivate: false
+          description: ""
+          sortKey: -1767920754432
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "product_id": 0,
+              "month": "14/10/2024",
+              "quantity": 10,
+              "total_price": 250
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/sales/import_csv"
+        name: Import Sales CSV
+        meta:
+          id: req_f30add833cbd458b9142d5c372fb2a89
+          created: 1767921606701
+          modified: 1767921651118
+          isPrivate: false
+          description: ""
+          sortKey: -1767920754632
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - id: pair_d75fbf44ffce45c6961a3bbcd81c8d13
+              name: file
+              value: ""
+              description: ""
+              disabled: false
+              type: file
+              fileName: C:\Users\Olive\Downloads\sales.csv
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_458397e5c9b38917b8c36427269ed826da10a252
+    created: 1767920206170
+    modified: 1767920206170
+environments:
+  name: Base Environment
+  meta:
+    id: env_458397e5c9b38917b8c36427269ed826da10a252
+    created: 1767920206169
+    modified: 1767920366096
+    isPrivate: false
+  data:
+    "":
+      base_url: http://127.0.0.1:8000
+      api_version: v1
+spec:
+  meta:
+    id: spc_22301fd13c6749f287afb284e8ba9af5
+    created: 1767920206168
+    modified: 1767920206168
