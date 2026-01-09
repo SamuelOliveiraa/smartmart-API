@@ -1,10 +1,10 @@
-# SmartMart Solutions API
+# SmartMart API
 
 Esta API foi desenvolvida como um teste prático para o processo seletivo de estágio em desenvolvimento full-stack da **APOLLO SOLUTIONS**. O objetivo é fornecer um conjunto de endpoints para gerenciar produtos, categorias e vendas de um sistema de varejo fictício, o SmartMart.
 
 ## 📝 Sobre o Projeto
 
-A SmartMart Solutions API é um serviço RESTful construído em Python que oferece funcionalidades de CRUD (Criar, Ler, Atualizar, Deletar) para as principais entidades de um sistema de vendas. Além das operações básicas, a API também inclui rotas para importação e exportação de dados em massa via arquivos CSV, facilitando a integração e a gestão de dados.
+A smartmart API é um serviço RESTful construído em Python que oferece funcionalidades de CRUD para as principais entidades de um sistema de vendas. Além das operações básicas, a API também inclui rotas para importação e exportação de dados em massa via arquivos CSV, facilitando a integração e a gestão de dados.
 
 A aplicação utiliza uma arquitetura limpa e modular, separando a lógica de negócios, o acesso ao banco de dados e a definição dos endpoints, o que a torna escalável e de fácil manutenção.
 
@@ -55,8 +55,8 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente local
 1.  **Clone o repositório:**
 
     ```bash
-    git clone https://github.com/seu-usuario/SmartMart-Solutions-API.git
-    cd SmartMart-Solutions-API
+    git clone https://github.com/seu-usuario/smartmart-API.git
+    cd smartmart-API
     ```
 
 2.  **Crie e ative um ambiente virtual:**
