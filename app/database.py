@@ -6,18 +6,23 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 load_dotenv()
 
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
+# Pega a URL do ambiente (Vercel ou .env)
+uri = os.getenv("DATABASE_URL")
 
-if not SQLALCHEMY_DATABASE_URL:
-    raise ValueError(
-        "A variável de ambiente DATABASE_URL não foi definida no arquivo .env"
-    )
+if not uri:
+    raise ValueError("A variável DATABASE_URL não foi encontrada.")
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
+# Ajuste crucial: PostgreSQL exige que a URL comece com postgresql://
+# E forçamos o uso do driver psycopg2 que você instalou
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql+psycopg2://", 1)
+elif uri.startswith("postgresql://"):
+    uri = uri.replace("postgresql://", "postgresql+psycopg2://", 1)
+
+# Removemos o "check_same_thread" pois ele quebra no Postgres
+engine = create_engine(uri)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
 
 
