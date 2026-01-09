@@ -20,7 +20,8 @@ elif uri.startswith("postgresql://"):
 engine = create_engine(
     uri,
     pool_pre_ping=True,
-    pool_recycle=300,
+    pool_size=5,
+    max_overflow=10,
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
