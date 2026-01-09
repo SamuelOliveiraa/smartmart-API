@@ -17,7 +17,11 @@ if uri.startswith("postgres://"):
 elif uri.startswith("postgresql://"):
     uri = uri.replace("postgresql://", "postgresql+psycopg2://", 1)
 
-engine = create_engine(uri)
+engine = create_engine(
+    uri,
+    pool_pre_ping=True,
+    pool_recycle=300,
+)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
