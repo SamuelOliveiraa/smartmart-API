@@ -15,7 +15,7 @@ class Product(ProductBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class CategoryBase(BaseModel):
@@ -30,7 +30,7 @@ class Category(CategoryBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class SaleBase(BaseModel):
@@ -48,4 +48,4 @@ class Sale(SaleBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
