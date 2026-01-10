@@ -103,9 +103,7 @@ def export_sales_csv(db: Session = Depends(database.get_db)):
         writer = csv.writer(output)
 
         # Cabeçalho do CSV de Vendas
-        writer.writerow(
-            ["id", "product_id", "quantity", "total_price", "sale_date", "customer_id"]
-        )
+        writer.writerow(["id", "product_id", "date", "quantity", "total_price"])
         yield output.getvalue()
         output.seek(0)
         output.truncate(0)
@@ -120,10 +118,7 @@ def export_sales_csv(db: Session = Depends(database.get_db)):
                     sale.product_id,
                     sale.quantity,
                     sale.total_price,
-                    sale.sale_date.strftime("%Y-%m-%d %H:%M:%S")
-                    if sale.sale_date
-                    else "",
-                    sale.customer_id,
+                    sale.date.strftime("%Y-%m-%d %H:%M:%S"),
                 ]
             )
             yield output.getvalue()
