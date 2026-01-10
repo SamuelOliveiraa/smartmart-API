@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://smart-mart-solutions.vercel.app"
+          "value": "*"
         },
         {
           "key": "Access-Control-Allow-Methods",
