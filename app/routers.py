@@ -62,6 +62,7 @@ def create_sale(sale: schemas.SaleCreate, db: Session = Depends(get_db)):
     return crud.create_sale(db, sale)
 
 
+# Returns a CSV file for download of products
 @router.get("/products/export_csv")
 def export_products_csv(db: Session = Depends(database.get_db)):
     def generate():
@@ -94,7 +95,46 @@ def export_products_csv(db: Session = Depends(database.get_db)):
     return StreamingResponse(generate(), media_type="text/csv", headers=headers)
 
 
-# Returns a CSV file for download
+# Returns a CSV file for download of sales
+@router.get("/sales/export_csv")
+def export_sales_csv(db: Session = Depends(database.get_db)):
+    def generate():
+        output = io.StringIO()
+        writer = csv.writer(output)
+
+        # Cabeçalho do CSV de Vendas
+        writer.writerow(
+            ["id", "product_id", "quantity", "total_price", "sale_date", "customer_id"]
+        )
+        yield output.getvalue()
+        output.seek(0)
+        output.truncate(0)
+
+        # Usamos yield_per para não sobrecarregar a RAM se houver milhares de vendas
+        sales = db.query(models.Sale).yield_per(100)
+
+        for sale in sales:
+            writer.writerow(
+                [
+                    sale.id,
+                    sale.product_id,
+                    sale.quantity,
+                    sale.total_price,
+                    sale.sale_date.strftime("%Y-%m-%d %H:%M:%S")
+                    if sale.sale_date
+                    else "",
+                    sale.customer_id,
+                ]
+            )
+            yield output.getvalue()
+            output.seek(0)
+            output.truncate(0)
+
+    headers = {"Content-Disposition": 'attachment; filename="sales_export.csv"'}
+    return StreamingResponse(generate(), media_type="text/csv", headers=headers)
+
+
+# Imports a CSV file for upload category data
 @router.post("/products/import_csv")
 async def import_products_csv(
     file: UploadFile = File(...), db: Session = Depends(get_db)
