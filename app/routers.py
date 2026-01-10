@@ -20,6 +20,12 @@ def get_db():
         db.close()
 
 
+# Rota de teste para confirmar se está online
+@router.get("/health")
+def health_check():
+    return {"status": "online", "database": "connected"}
+
+
 # GET all products
 @router.get("/products", response_model=list[schemas.Product])
 def list_products(db: Session = Depends(get_db)):
