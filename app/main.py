@@ -10,7 +10,7 @@ app = FastAPI(title="SmartMart API")
 # Defina as origens permitidas
 origins = [
     "http://localhost:5173",  # Remover em produção
-    "https://seu-dominio-final.vercel.app",
+    "https://smart-mart-solutions.vercel.app/",
 ]
 
 app.add_middleware(
