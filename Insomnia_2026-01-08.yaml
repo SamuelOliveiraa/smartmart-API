@@ -10,7 +10,7 @@ collection:
     meta:
       id: fld_daf777cc86fc4f899d9a6fa3a16d78cd
       created: 1767920292835
-      modified: 1767920292835
+      modified: 1768018088038
       sortKey: -1767920292835
       description: ""
     children:
@@ -40,7 +40,7 @@ collection:
         meta:
           id: req_15eb0fdedbf24709a70e9e04bc724f96
           created: 1767920424162
-          modified: 1767920495875
+          modified: 1768017205446
           isPrivate: false
           description: ""
           sortKey: -1767920473490
@@ -50,8 +50,10 @@ collection:
           text: |-
             {
               "name": "Produto 1",
-              "category_id": 0,
-              "price": 100
+              "category_id": 1,
+            	"description": "testando esse negocio aqui",
+              "price": 100,
+            	"brand": "Samsung"
             }
         headers:
           - name: Content-Type
@@ -245,19 +247,19 @@ collection:
         meta:
           id: req_29a07cbf79df42008ae9f409b94caeb8
           created: 1767920677608
-          modified: 1767920754443
+          modified: 1768018584374
           isPrivate: false
           description: ""
           sortKey: -1767920754432
         method: POST
         body:
           mimeType: application/json
-          text: |-
+          text: |
             {
-              "product_id": 0,
-              "month": "14/10/2024",
+              "product_id": 3,
+              "date": "2024-10-14",
               "quantity": 10,
-              "total_price": 250
+              "total_price": 2502.34
             }
         headers:
           - name: Content-Type
@@ -326,4 +328,4 @@ spec:
   meta:
     id: spc_22301fd13c6749f287afb284e8ba9af5
     created: 1767920206168
-    modified: 1767920206168
+    modified: 1767976619230

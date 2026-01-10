@@ -1,14 +1,19 @@
+from datetime import datetime
+from typing import Optional
+
 from pydantic import BaseModel
 
 
 class ProductBase(BaseModel):
     name: str
+    description: str
     category_id: int
     price: float
+    brand: str
 
 
 class ProductCreate(ProductBase):
-    pass
+    id: Optional[int] = None
 
 
 class Product(ProductBase):
@@ -35,7 +40,7 @@ class Category(CategoryBase):
 
 class SaleBase(BaseModel):
     product_id: int
-    date: str
+    date: datetime
     quantity: int
     total_price: float
 
