@@ -11,11 +11,12 @@ app = FastAPI(title="SmartMart API")
 origins = [
     "http://localhost:5173",  # Remover em produção
     "https://smart-mart-solutions.vercel.app/",
+    "https://smart-mart-solutions.vercel.app",
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
