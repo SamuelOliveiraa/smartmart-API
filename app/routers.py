@@ -1,6 +1,7 @@
 import csv
 import io
 from datetime import datetime
+from typing import Any, Iterable, cast
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from fastapi.responses import StreamingResponse
@@ -102,30 +103,41 @@ def export_sales_csv(db: Session = Depends(database.get_db)):
         output = io.StringIO()
         writer = csv.writer(output)
 
-        # Cabeçalho do CSV de Vendas
-        writer.writerow(["id", "product_id", "date", "quantity", "total_price"])
+        # 1. Cabeçalho sincronizado (A ordem aqui manda em tudo)
+        writer.writerow(["id", "product_id", "quantity", "total_price", "date"])
         yield output.getvalue()
         output.seek(0)
         output.truncate(0)
 
-        # Usamos yield_per para não sobrecarregar a RAM se houver milhares de vendas
-        sales = db.query(models.Sale).yield_per(100)
+        # yield_per evita estourar a memória do servidor
+        sales: Iterable[models.Sale] = db.query(models.Sale).yield_per(100)
 
         for sale in sales:
+            # Tratamento da data para evitar erro se o campo estiver vazio
+            data_formatada = (
+                sale.date.strftime("%Y-%m-%d %H:%M:%S") if sale.date else ""
+            )
+
+            qty = cast(Any, sale.quantity)
+            price = cast(Any, sale.total_price)
+
             writer.writerow(
                 [
                     sale.id,
                     sale.product_id,
-                    sale.date.strftime("%Y-%m-%d %H:%M:%S"),
-                    sale.quantity,
-                    sale.total_price,
+                    int(qty) if qty is not None else 0,
+                    float(price) if price is not None else 0.0,
+                    data_formatada,
                 ]
             )
             yield output.getvalue()
             output.seek(0)
             output.truncate(0)
 
-    headers = {"Content-Disposition": 'attachment; filename="sales_export.csv"'}
+    headers = {
+        "Content-Disposition": 'attachment; filename="sales_export.csv"',
+        "Content-Type": "text/csv",
+    }
     return StreamingResponse(generate(), media_type="text/csv", headers=headers)
 
 
