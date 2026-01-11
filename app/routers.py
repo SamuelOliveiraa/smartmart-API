@@ -116,9 +116,9 @@ def export_sales_csv(db: Session = Depends(database.get_db)):
                 [
                     sale.id,
                     sale.product_id,
+                    sale.date.strftime("%Y-%m-%d %H:%M:%S"),
                     sale.quantity,
                     sale.total_price,
-                    sale.date.strftime("%Y-%m-%d %H:%M:%S"),
                 ]
             )
             yield output.getvalue()
