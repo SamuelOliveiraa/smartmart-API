@@ -1,126 +1,126 @@
 # SmartMart API
 
-Esta API foi desenvolvida como um teste prático para o processo seletivo de estágio em desenvolvimento full-stack da **APOLLO SOLUTIONS**. O objetivo é fornecer um conjunto de endpoints para gerenciar produtos, categorias e vendas de um sistema de varejo fictício, o SmartMart.
+This API was developed as a practical test for the full-stack development internship selection process at **APOLLO SOLUTIONS**. The objective is to provide a set of endpoints to manage products, categories, and sales for a fictional retail system, SmartMart.
 
-## 📝 Sobre o Projeto
+## 📝 About the Project
 
-A smartmart API é um serviço RESTful construído em Python que oferece funcionalidades de CRUD para as principais entidades de um sistema de vendas. Além das operações básicas, a API também inclui rotas para importação e exportação de dados em massa via arquivos CSV, facilitando a integração e a gestão de dados.
+The SmartMart API is a RESTful service built in Python that offers CRUD functionalities for the main entities of a sales system. In addition to basic operations, the API also includes routes for bulk data import and export via CSV files, facilitating integration and data management.
 
-A aplicação utiliza uma arquitetura limpa e modular, separando a lógica de negócios, o acesso ao banco de dados e a definição dos endpoints, o que a torna escalável e de fácil manutenção.
+The application uses a clean and modular architecture, separating business logic, database access, and endpoint definitions, which makes it scalable and easy to maintain.
 
-## 💻 Tecnologias Utilizadas
+## 💻 Technologies Used
 
-O projeto foi construído com as seguintes tecnologias:
+The project was built with the following technologies:
 
-- **Python 3.12:** Linguagem de programação principal.
-- **FastAPI:** Framework web de alta performance para a construção de APIs.
-- **SQLAlchemy:** ORM (Object-Relational Mapper) para interação com o banco de dados SQL.
-- **Uvicorn:** Servidor ASGI (Asynchronous Server Gateway Interface) para rodar a aplicação FastAPI.
-- **Pydantic:** Para validação e serialização de dados.
-- **SQLite:** Banco de dados relacional leve, utilizado para o desenvolvimento e armazenamento local.
-- **Pandas:** Utilizado para manipulação de dados, especialmente nas operações de importação/exportação.
-- **Vercel:** Configurada para deploy simplificado da API em ambiente serverless.
+- **Python 3.12:** Main programming language.
+- **FastAPI:** High-performance web framework for building APIs.
+- **SQLAlchemy:** ORM (Object-Relational Mapper) for interacting with SQL databases.
+- **Uvicorn:** ASGI (Asynchronous Server Gateway Interface) server to run the FastAPI application.
+- **Pydantic:** For data validation and serialization.
+- **SQLite:** Lightweight relational database, used for development and local storage.
+- **Pandas:** Used for data manipulation, especially in import/export operations.
+- **Vercel:** Configured for simplified API deployment in a serverless environment.
 
-## 📂 Estrutura do Projeto
+## 📂 Project Structure
 
-O código-fonte está organizado da seguinte forma:
+The source code is organized as follows:
 
 ```
 ├── api/
-│   └── index.py         # Ponto de entrada para o deploy na Vercel
+│   └── index.py         # Entry point for Vercel deployment
 ├── app/
-│   ├── crud.py          # Funções de acesso e manipulação de dados (CRUD)
-│   ├── database.py      # Configuração da conexão com o banco de dados
-│   ├── main.py          # Ponto de entrada principal da aplicação FastAPI
-│   ├── models.py        # Definição dos modelos de tabela do SQLAlchemy
-│   ├── routers.py       # Definição dos endpoints (rotas) da API
-│   └── schemas.py       # Definição dos schemas Pydantic para validação de dados
-├── requirements.txt     # Lista de dependências Python
-├── vercel.json          # Configuração de deploy para a Vercel
-├── Insomnia_2026-01-08.yaml # Arquivo de configuração para o Insomnia
-└── smartmart.db         # Arquivo do banco de dados SQLite
+│   ├── crud.py          # Data access and manipulation functions (CRUD)
+│   ├── database.py      # Database connection configuration
+│   ├── main.py          # Main FastAPI application entry point
+│   ├── models.py        # SQLAlchemy table model definitions
+│   ├── routers.py       # API endpoint (route) definitions
+│   └── schemas.py       # Pydantic schema definitions for data validation
+├── requirements.txt     # Python dependencies list
+├── vercel.json          # Vercel deployment configuration
+├── Insomnia_2026-01-08.yaml # Configuration file for Insomnia
+└── smartmart.db         # SQLite database file
 ```
 
-## 🚀 Como Executar Localmente
+## 🚀 How to Run Locally
 
-Siga os passos abaixo para configurar e executar o projeto em seu ambiente local.
+Follow the steps below to set up and run the project in your local environment.
 
-### Pré-requisitos
+### Prerequisites
 
-- Python 3.10 ou superior
-- Pip (gerenciador de pacotes do Python)
+- Python 3.10 or higher
+- Pip (Python package manager)
 
-### Instalação
+### Installation
 
-1.  **Clone o repositório:**
+1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/seu-usuario/smartmart-API.git
+    git clone https://github.com/your-username/smartmart-API.git
     cd smartmart-API
     ```
 
-2.  **Crie e ative um ambiente virtual:**
+2.  **Create and activate a virtual environment:**
 
     ```bash
-    # Para Windows
+    # For Windows
     python -m venv venv
     .\venv\Scripts\activate
 
-    # Para macOS/Linux
+    # For macOS/Linux
     python3 -m venv venv
     source venv/bin/activate
     ```
 
-3.  **Instale as dependências:**
+3.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
 
-### Execução
+### Execution
 
-Com o ambiente configurado, inicie o servidor de desenvolvimento Uvicorn:
+With the environment configured, start the Uvicorn development server:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-A API estará disponível em `http://127.0.0.1:8000`. A documentação interativa (Swagger UI) pode ser acessada em `http://127.0.0.1:8000/docs`.
+The API will be available at `http://127.0.0.1:8000`. The interactive documentation (Swagger UI) can be accessed at `http://127.0.0.1:8000/docs`.
 
-## 🛠️ Usando a API com Insomnia
+## 🛠️ Using the API with Insomnia
 
-Para facilitar os testes dos endpoints, o projeto inclui um arquivo de configuração para o cliente de API **Insomnia**. Este arquivo já contém todas as rotas da API pré-configuradas.
+To facilitate testing the endpoints, the project includes a configuration file for the **Insomnia** API client. This file already contains all API routes pre-configured.
 
-### Como importar o arquivo no Insomnia:
+### How to import the file into Insomnia:
 
-1.  Abra o Insomnia.
-2.  Vá para o menu principal (canto superior esquerdo) e clique em **"Import/Export"**.
-3.  Na janela que abrir, clique em **"Import Data"** e depois em **"From File"**.
-4.  Selecione o arquivo `Insomnia_2026-01-08.yaml` que está na raiz deste projeto.
-5.  Após a importação, uma nova coleção chamada "SmartMart Solutions" será criada, contendo todas as requisições prontas para serem usadas.
+1.  Open Insomnia.
+2.  Go to the main menu (top left corner) and click on **"Import/Export"**.
+3.  In the window that opens, click on **"Import Data"** and then **"From File"**.
+4.  Select the `Insomnia_2026-01-08.yaml` file located at the root of this project.
+5.  After importing, a new collection named "SmartMart Solutions" will be created, containing all requests ready to be used.
 
-## Endpoints da API
+## API Endpoints
 
-A API oferece os seguintes endpoints:
+The API offers the following endpoints:
 
-### Produtos (`/products`)
+### Products (`/products`)
 
-- `GET /products`: Retorna uma lista de todos os produtos.
-- `POST /products`: Cria um novo produto.
-- `GET /products/export_csv`: Exporta todos os produtos para um arquivo CSV.
-- `POST /products/import_csv`: Importa produtos a partir de um arquivo CSV.
+- `GET /products`: Returns a list of all products.
+- `POST /products`: Creates a new product.
+- `GET /products/export_csv`: Exports all products to a CSV file.
+- `POST /products/import_csv`: Imports products from a CSV file.
 
-### Categorias (`/categories`)
+### Categories (`/categories`)
 
-- `GET /categories`: Retorna uma lista de todas as categorias.
-- `POST /categories`: Cria uma nova categoria.
-- `POST /categories/import_csv`: Importa categorias a partir de um arquivo CSV.
+- `GET /categories`: Returns a list of all categories.
+- `POST /categories`: Creates a new category.
+- `POST /categories/import_csv`: Imports categories from a CSV file.
 
-### Vendas (`/sales`)
+### Sales (`/sales`)
 
-- `GET /sales`: Retorna uma lista de todas as vendas.
-- `POST /sales`: Registra uma nova venda.
-- `POST /sales/import_csv`: Importa dados de vendas a partir de um arquivo CSV.
+- `GET /sales`: Returns a list of all sales.
+- `POST /sales`: Records a new sale.
+- `POST /sales/import_csv`: Imports sales data from a CSV file.
 
 ## ☁️ Deploy
 
-O projeto está pré-configurado para deploy na plataforma **Vercel**. O arquivo `vercel.json` define a rota de build e o redirecionamento, apontando todas as requisições para o entrypoint `api/index.py`. Para fazer o deploy, basta conectar seu repositório Git à Vercel.
+The project is pre-configured for deployment on the **Vercel** platform. The `vercel.json` file defines the build route and redirection, pointing all requests to the `api/index.py` entrypoint. To deploy, simply connect your Git repository to Vercel.
